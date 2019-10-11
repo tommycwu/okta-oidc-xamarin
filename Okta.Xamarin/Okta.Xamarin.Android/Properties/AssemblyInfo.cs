@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Okta.Xamarin.Android")]
+[assembly: AssemblyTitle("Okta.Xamarin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Okta")]
-[assembly: AssemblyProduct("Okta.Xamarin.Android")]
+[assembly: AssemblyProduct("Okta.Xamarin")]
 [assembly: AssemblyCopyright("Copyright ©  2019 Okta")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

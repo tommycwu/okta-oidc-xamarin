@@ -10,8 +10,8 @@
     <TemplateGuid>{9ef11e43-1701-4396-8835-8392d57abb70}</TemplateGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Okta.Xamarin.Android</RootNamespace>
-    <AssemblyName>Okta.Xamarin.Android</AssemblyName>
+    <RootNamespace>Okta.Xamarin</RootNamespace>
+    <AssemblyName>Okta.Xamarin</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
