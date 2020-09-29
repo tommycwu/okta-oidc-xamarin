@@ -47,6 +47,11 @@
   <ItemGroup>
     <Compile Include="Tests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </None>
+  </ItemGroup>
   <Import Project="..\Okta.Xamarin.UITest.Shared\Okta.Xamarin.UITest.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

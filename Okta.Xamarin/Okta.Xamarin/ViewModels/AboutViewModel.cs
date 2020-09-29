@@ -1,23 +1,35 @@
-﻿using System.Windows.Input;
+﻿// <copyright file="AboutViewModel.cs" company="Okta, Inc">
+// Copyright (c) 2020 - present Okta, Inc. All rights reserved.
+// Licensed under the Apache 2.0 license. See the LICENSE file in the project root for full license information.
+// </copyright>
+
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 namespace Okta.Xamarin.ViewModels
 {
-	public partial class AboutViewModel : BaseViewModel
+    public partial class AboutViewModel : BaseViewModel
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenOktaApiReferenceCommand = new Command(async () => await Browser.OpenAsync("https://developer.okta.com/docs/reference/"));
-            SignInCommand = new Command(async () => await SignIn());
+            this.Title = "About";
+            this.OpenOktaApiReferenceCommand = new Command(async () => await Browser.OpenAsync("https://developer.okta.com/docs/reference/"));
+            this.SignInCommand = new Command(async () => await this.SignIn());
         }
 
+        /// <summary>
+        /// Gets the command that opens Okta Api reference.
+        /// </summary>
         public ICommand OpenOktaApiReferenceCommand { get; }
-		public ICommand SignInCommand { get; set; }
 
-		public async Task SignIn()
+        /// <summary>
+        /// Gets or sets the command used to sign in.
+        /// </summary>
+        public ICommand SignInCommand { get; set; }
+
+        public async Task SignIn()
 		{
 			await OktaContext.Current.SignIn();
 		}

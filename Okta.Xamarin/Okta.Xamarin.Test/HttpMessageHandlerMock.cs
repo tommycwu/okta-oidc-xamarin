@@ -12,9 +12,9 @@ using Okta.Xamarin;
 
 namespace Okta.Xamarin.Test
 {
-	public class HttpMessageHandlerMock : HttpMessageHandler
-	{
-		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    public class HttpMessageHandlerMock : HttpMessageHandler
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
 			var content = await request.Content.ReadAsStringAsync();
 			System.Collections.Specialized.NameValueCollection data = System.Web.HttpUtility.ParseQueryString(content);

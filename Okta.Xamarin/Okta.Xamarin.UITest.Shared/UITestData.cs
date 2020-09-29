@@ -11,92 +11,91 @@ using System.Net.NetworkInformation;
 
 namespace Okta.Xamarin.UITest
 {
-	public class UITestData
-	{
-		public static UITestData Load(string filePath = "~/.okta/UITestData.json")
-		{
-			string uiTestDataFilePath = ResolveHomePath(filePath);
-			if (!File.Exists(uiTestDataFilePath))
-			{
-				throw new ArgumentException($"Specified test data file was not found: ({uiTestDataFilePath})");
-			}
-			return JsonConvert.DeserializeObject<UITestData>(File.ReadAllText(uiTestDataFilePath));
-		}
+    public class UITestData
+    {
+        public static UITestData Load(string filePath = "~/.okta/UITestData.json")
+        {
+            string uiTestDataFilePath = ResolveHomePath(filePath);
+            if (!File.Exists(uiTestDataFilePath))
+            {
+                throw new ArgumentException($"Specified test data file was not found: ({uiTestDataFilePath})");
+            }
+            return JsonConvert.DeserializeObject<UITestData>(File.ReadAllText(uiTestDataFilePath));
+        }
 
-		private static Lazy<UITestData> lazyUiTestData = new Lazy<UITestData>(() => Load());
-		private static UITestData current;
-		public static UITestData Current
-		{
-			get
-			{
-				if(current == null)
-				{
-					current = lazyUiTestData.Value;
-				}
-				return current;
-			}
-			set
-			{
-				current = value;
-			}
-		}
+        private static readonly Lazy<UITestData> lazyUiTestData = new Lazy<UITestData>(() => Load());
+        private static UITestData current;
 
-		/// <summary>
-		/// The user name used to test sign in.
-		/// </summary>
-		public string TestUserName { get; set; }
+        public static UITestData Current
+        {
+            get
+            {
+                if(current == null)
+                {
+                    current = lazyUiTestData.Value;
+                }
+                return current;
+            }
 
-		/// <summary>
-		/// The password used to test sign in.
-		/// </summary>
-		public string TestPassword { get; set; }
+            set => current = value;
+        }
 
-		/// <summary>
-		/// Ensures that TestUserName and TestPassword properties are set.  Throws ArgumentException
-		/// if required values are missing.
-		/// </summary>
-		public void Validate()
-		{
-			if (string.IsNullOrEmpty(TestUserName))
-			{
-				throw new ArgumentException("TestUserName not set");
-			}
-			if (string.IsNullOrEmpty(TestPassword))
-			{
-				throw new ArgumentException("TestPassword not set");
-			}
-		}
+        /// <summary>
+        /// The user name used to test sign in.
+        /// </summary>
+        public string TestUserName { get; set; }
 
-		private static string ResolveHomePath(string path)
-		{
-			if (string.IsNullOrEmpty(path))
-			{
-				return path;
-			}
-			if (path.StartsWith("~"))
-			{
-				string homePath = GetHomePath();
-				string trimmed = path.Substring(1).Trim();
-				if (trimmed.StartsWith("/"))
-				{
-					trimmed = trimmed.Substring(1);
-				}
-				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-				{
-					return Path.Combine(homePath, trimmed);
-				}
-				return Path.Combine(homePath, trimmed);
-			}
-			return path;
-		}
+        /// <summary>
+        /// The password used to test sign in.
+        /// </summary>
+        public string TestPassword { get; set; }
 
-		private static string GetHomePath()
-		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				return Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
-			}
-			return Environment.GetEnvironmentVariable("HOME");
-		}
-	}
+        /// <summary>
+        /// Ensures that TestUserName and TestPassword properties are set.  Throws ArgumentException
+        /// if required values are missing.
+        /// </summary>
+        public void Validate()
+        {
+            if (string.IsNullOrEmpty(TestUserName))
+            {
+                throw new ArgumentException("TestUserName not set");
+            }
+            if (string.IsNullOrEmpty(TestPassword))
+            {
+                throw new ArgumentException("TestPassword not set");
+            }
+        }
+
+        private static string ResolveHomePath(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return path;
+            }
+            if (path.StartsWith("~"))
+            {
+                string homePath = GetHomePath();
+                string trimmed = path.Substring(1).Trim();
+                if (trimmed.StartsWith("/"))
+                {
+                    trimmed = trimmed.Substring(1);
+                }
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    return Path.Combine(homePath, trimmed);
+                }
+                return Path.Combine(homePath, trimmed);
+            }
+            return path;
+        }
+
+        private static string GetHomePath()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
+            }
+            return Environment.GetEnvironmentVariable("HOME");
+        }
+    }
 }

@@ -96,6 +96,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </None>
     <None Include="Keystore\okta.xamarin.android-test\okta.xamarin.android-test.keyInfo">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

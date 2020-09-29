@@ -76,6 +76,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <BundleResource Include="Resources\tab_profile.png" />
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="OidcClient.iOS.cs" />

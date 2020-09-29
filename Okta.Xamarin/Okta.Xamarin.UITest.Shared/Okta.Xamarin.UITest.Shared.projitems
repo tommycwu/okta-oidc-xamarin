@@ -14,4 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UITestData.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+  </ItemGroup>
 </Project>
